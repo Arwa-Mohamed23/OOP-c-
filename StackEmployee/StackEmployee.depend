@@ -1,0 +1,89 @@
+# depslib dependency file v1.0
+1733314179 source:/home/arwa/Documents/StackEmployee/main.cpp
+	<iostream>
+	<limits>
+	"stack.h"
+	"menu.h"
+	"terminalFunction.h"
+
+1733312030 source:/home/arwa/Documents/StackEmployee/stack.cpp
+	"stack.h"
+	<iostream>
+	"emp.h"
+
+1733295389 /home/arwa/Documents/StackEmployee/stack.h
+	"emp.h"
+
+1733314277 /home/arwa/Documents/StackEmployee/emp.h
+
+1733314257 source:/home/arwa/Documents/StackEmployee/terminalFunction.cpp
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"terminalFunction.h"
+	<windows.h>
+	<io.h>
+	<unistd.h>
+	<termios.h>
+
+1733314061 /home/arwa/Documents/StackEmployee/terminalFunction.h
+	<stdio.h>
+
+1733260249 source:/home/arwa/Documents/StackEmployee/menu.cpp
+	"menu.h"
+	"terminalFunction.h"
+	<iostream>
+	<cstring>
+
+1733258197 /home/arwa/Documents/StackEmployee/menu.h
+
+1733314093 source:/home/arwa/Documents/StackEmployee/emp.cpp
+	"emp.h"
+	"terminalFunction.h"
+	<iostream>
+	<limits>
+
+1733315123 source:/home/arwa/Documents/OOP-c++/StackEmployee/emp.cpp
+	"emp.h"
+	"terminalFunction.h"
+	<iostream>
+	<limits>
+
+1733314277 /home/arwa/Documents/OOP-c++/StackEmployee/emp.h
+
+1733314061 /home/arwa/Documents/OOP-c++/StackEmployee/terminalFunction.h
+	<stdio.h>
+
+1733260249 source:/home/arwa/Documents/OOP-c++/StackEmployee/menu.cpp
+	"menu.h"
+	"terminalFunction.h"
+	<iostream>
+	<cstring>
+
+1733258197 /home/arwa/Documents/OOP-c++/StackEmployee/menu.h
+
+1733312030 source:/home/arwa/Documents/OOP-c++/StackEmployee/stack.cpp
+	"stack.h"
+	<iostream>
+	"emp.h"
+
+1733295389 /home/arwa/Documents/OOP-c++/StackEmployee/stack.h
+	"emp.h"
+
+1733314257 source:/home/arwa/Documents/OOP-c++/StackEmployee/terminalFunction.cpp
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"terminalFunction.h"
+	<windows.h>
+	<io.h>
+	<unistd.h>
+	<termios.h>
+
+1733316297 source:/home/arwa/Documents/OOP-c++/StackEmployee/main.cpp
+	<iostream>
+	<limits>
+	"stack.h"
+	"menu.h"
+	"terminalFunction.h"
+
