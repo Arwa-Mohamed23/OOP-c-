@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1733474088 source:/home/arwa/Documents/OOP-c++/string/main.cpp
+1733485541 source:/home/arwa/Documents/OOP-c++/string/main.cpp
 	<iostream>
 	"String.h"
 
-1733474107 /home/arwa/Documents/OOP-c++/string/include/String.h
+1733485896 /home/arwa/Documents/OOP-c++/string/include/String.h
+	<iostream>
 
-1733474119 source:/home/arwa/Documents/OOP-c++/string/src/String.cpp
+1733486103 source:/home/arwa/Documents/OOP-c++/string/src/String.cpp
 	<iostream>
 	"String.h"
 

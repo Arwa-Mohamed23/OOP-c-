@@ -35,29 +35,28 @@ int String::Length()
 
 void String::ConcatStr (String src)
 {
-    char *temp=new char[size+src.size+1];
-    for(int i=0; i<(size+src.size); i++)
+    *this=*this+src;
+}
+
+String& String::operator+ (String &s)
+{
+    char *temp=new char[size+s.size+1];
+    for(int i=0; i<(size+s.size); i++)
     {
         if(i<size)
             temp[i]=this->str[i];
-        else temp[i]=src.str[i-size];
+        else temp[i]=s.str[i-size];
     }
-    temp[size+src.size]=TERMINATOR;
+    temp[size+s.size]=TERMINATOR;
     delete[] this->str;
     this->str=temp;
-    size=size+src.size;
+    size=size+s.size;
+    return *this;
 }
 
 void String::CopyStr (String src)
 {
-    delete[] this->str;
-    size=src.size;
-    this->str=new char[size+1];
-    for(int i=0; i<size; i++)
-    {
-        this->str[i]=src.str[i];
-    }
-    this->str[size]=TERMINATOR;
+    *this=src;
 }
 
 String& String::operator= (String &s)
@@ -76,10 +75,36 @@ String& String::operator= (String &s)
     return *this;
 }
 
-/*void String::operator<< (String &s)
+int String::CompareStr (String src)
 {
-    cout<<s.str;
-}*/
+    for(int i=0; i<size&&i<src.size; i++)
+    {
+        if(this->str[i]>src.str[i])
+            return 1;
+        else if(this->str[i]<src.str[i])
+            return -1;
+    }
+    if(size>src.size)return 1;
+    else if(size<src.size)return -1;
+    return 0;
+}
+
+char String::operator== (String &s)
+{
+    for(int i=0; i<size&&i<s.size; i++)
+    {
+        if(this->str[i]!=s.str[i])
+            return 0;
+    }
+    if(size!=s.size)return 0;
+    return 1;
+}
+
+ostream& operator<<(ostream& os,String &s)
+{
+    os<<s.str;
+    return os;
+}
 
 void String::print()
 {
