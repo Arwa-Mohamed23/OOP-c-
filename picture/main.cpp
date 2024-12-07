@@ -165,17 +165,16 @@ int main()
 
     Picture myPic;
 
-    Circle cArr[3] = { Circle(50, 50, 50,RED), Circle(200, 100, 100,GREEN), Circle(420, 50, 30,BLUE) };
-    Line lArr[2] = { Line(420, 50, 300, 300,YELLOW), Line(40, 500, 500, 400,YELLOW) };
-    Rect rArr[2];
-    rArr[0] =Rect(30, 40, 170, 100,CYAN);
-    Point p1(420, 50);
-    Point p2(500, 300);
-    rArr[1] =Rect(p1,p2,MAGENTA);
+    Circle cArr[5] = { Circle(230, 250, 50,BLUE),Circle(370, 250, 50,BLUE),
+                       Circle(230, 250, 10,BLUE),Circle(370, 250, 10,BLUE),
+                       Circle(300, 300, 200,BLUE)};
+    Rect rArr(200, 350, 400, 400,BLUE);
+    Line lArr[4] = { Line(240, 350, 240, 400,BLUE), Line(280, 350, 280, 400,BLUE),
+                     Line(320, 350, 320, 400,BLUE), Line(360, 350, 360, 400,BLUE)};
 
-    myPic.setCircles(3, cArr);
-    myPic.setRects(2, rArr);
-    myPic.setLines(2, lArr);
+    myPic.setCircles(5, cArr);
+    myPic.setRects(1, &rArr);
+    myPic.setLines(4, lArr);
 
     myPic.paint();
 
