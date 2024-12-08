@@ -33,12 +33,15 @@ class Shape
 protected:
     int color;
 public:
-    Shape(){
-       color=WHITE;
+    Shape()
+    {
+        color=WHITE;
     }
-    Shape(int c){
-       color=c;
+    Shape(int c)
+    {
+        color=c;
     }
+    virtual void draw()=0;
 };
 
 class Line:public Shape
@@ -48,7 +51,7 @@ private:
     Point end;
 public:
     Line() : start(), end(),Shape() {}
-    Line(int x1, int y1, int x2, int y2,int c) : start(x1, y1), end(x2, y2), Shape(c){}
+    Line(int x1, int y1, int x2, int y2,int c) : start(x1, y1), end(x2, y2), Shape(c) {}
 
     void draw()
     {
@@ -65,7 +68,7 @@ private:
 public:
     Rect() : ul(), lr(),Shape() {}
     Rect(int x1, int y1, int x2, int y2,int c) : ul(x1, y1), lr(x2, y2),Shape(c) {}
-    Rect(Point upperLeft, Point lowerRight,int c) : ul(upperLeft), lr(lowerRight),Shape(c){}
+    Rect(Point upperLeft, Point lowerRight,int c) : ul(upperLeft), lr(lowerRight),Shape(c) {}
 
     void draw()
     {
@@ -98,63 +101,99 @@ public:
 
 class Picture
 {
+    /*private:
+        int cNum, rNum, lNum;
+        Circle* pCircles;
+        Rect* pRects;
+        Line* pLines;
+
+    public:
+        Picture()
+        {
+            cNum=0, rNum=0, lNum=0;
+            pCircles=nullptr;
+            pRects=nullptr;
+            pLines=nullptr;
+        }
+
+        Picture(int cN, int rN, int lN,Circle* pC,Rect* pR, Line* pL)
+        {
+            cNum=cN, rNum=rN, lNum=lN;
+            pCircles=pC;
+            pRects=pR;
+            pLines=pL;
+        }
+
+
+        void setCircles(int cn, Circle* pC)
+        {
+            cNum = cn;
+            pCircles = pC;
+        }
+
+        void setRects(int rn, Rect* pR)
+        {
+            rNum = rn;
+            pRects = pR;
+        }
+
+        void setLines(int ln, Line* pL)
+        {
+            lNum = ln;
+            pLines = pL;
+        }
+
+        void paint()
+        {
+            for (int i = 0; i < cNum; i++)
+            {
+                pCircles[i].draw();
+            }
+            for (int i = 0; i < rNum; i++)
+            {
+                pRects[i].draw();
+            }
+            for (int i = 0; i < lNum; i++)
+            {
+                pLines[i].draw();
+            }
+        }*/
 private:
-    int cNum, rNum, lNum;
-    Circle* pCircles;
-    Rect* pRects;
-    Line* pLines;
-
+    int size;
+    int current;
+    Shape **ptr;
 public:
-    Picture()
+    Picture(int size)
     {
-        cNum=0, rNum=0, lNum=0;
-        pCircles=nullptr;
-        pRects=nullptr;
-        pLines=nullptr;
+        this->size=size;
+        current=0;
+        ptr=(Shape **)malloc(size*sizeof(Shape *));
     }
 
-    Picture(int cN, int rN, int lN,Circle* pC,Rect* pR, Line* pL)
+    void addShape(Shape *s)
     {
-        cNum=cN, rNum=rN, lNum=lN;
-        pCircles=pC;
-        pRects=pR;
-        pLines=pL;
+        if(current==size)
+        {
+            return;
+        }
+        ptr[current]=s;
+        current++;
     }
-
-
-    void setCircles(int cn, Circle* pC)
-    {
-        cNum = cn;
-        pCircles = pC;
-    }
-
-    void setRects(int rn, Rect* pR)
-    {
-        rNum = rn;
-        pRects = pR;
-    }
-
-    void setLines(int ln, Line* pL)
-    {
-        lNum = ln;
-        pLines = pL;
-    }
-
     void paint()
     {
-        for (int i = 0; i < cNum; i++)
+        for (int i = 0; i < current; i++)
         {
-            pCircles[i].draw();
-        }
-        for (int i = 0; i < rNum; i++)
-        {
-            pRects[i].draw();
-        }
-        for (int i = 0; i < lNum; i++)
-        {
-            pLines[i].draw();
+            ptr[i]->draw();
         }
     }
+
+    ~Picture() {
+    for (int i = 0; i < current; i++) {
+        delete ptr[i];
+    }
+    delete[] ptr;
+   }
+
 };
 
 int main()
@@ -163,20 +202,28 @@ int main()
     int gd = DETECT, gm;
     initgraph(&gd, &gm, "");
 
-    Picture myPic;
+    /*Picture myPic;
 
     Circle cArr[5] = { Circle(230, 250, 50,BLUE),Circle(370, 250, 50,BLUE),
                        Circle(230, 250, 10,BLUE),Circle(370, 250, 10,BLUE),
-                       Circle(300, 300, 200,BLUE)};
+                       Circle(300, 300, 200,BLUE)
+                     };
     Rect rArr(200, 350, 400, 400,BLUE);
     Line lArr[4] = { Line(240, 350, 240, 400,BLUE), Line(280, 350, 280, 400,BLUE),
-                     Line(320, 350, 320, 400,BLUE), Line(360, 350, 360, 400,BLUE)};
+                     Line(320, 350, 320, 400,BLUE), Line(360, 350, 360, 400,BLUE)
+                   };
 
     myPic.setCircles(5, cArr);
     myPic.setRects(1, &rArr);
     myPic.setLines(4, lArr);
 
-    myPic.paint();
+    myPic.paint();*/
+    Picture p(3);
+    p.addShape(new Circle(300, 300, 200,BLUE));
+     Rect rArr(200, 350, 400, 400,BLUE);
+    p.addShape(&rArr);
+    p.addShape(new Line(240, 350, 240, 400,BLUE));
+    p.paint();
 
     getch();
 
