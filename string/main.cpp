@@ -8,6 +8,7 @@ int main()
     String s("arwaa");
     String a(s);
     String b("mona");
+    cout<<a<<endl;
    /* s.print();
     cout<<endl;*/
     //cout<<s.Length()<<endl;

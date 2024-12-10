@@ -1,12 +1,13 @@
 #include <iostream>
 using namespace std;
 
+template <class T>
 class Stack
 {
 private:
     int top;
     int size;
-    int * items ;
+    T * items ;
     static int counter;
 public:
 
@@ -15,7 +16,7 @@ public:
         counter++;
         this->size=size;
         top=0;
-        items= new int[size];
+        items= new T[size];
     }
 
     Stack(Stack &x)
@@ -23,7 +24,7 @@ public:
         counter++;
         this->size=x.size;
         this->top=x.top;
-        this->items= new int[size];
+        this->items= new T[size];
         for(int i=0; i<top; i++)
         {
             this->items[i]=x.items[i];
@@ -35,7 +36,7 @@ public:
         return counter;
     }
 
-    void push(int x)
+    void push(T x)
     {
         if(top==size)
         {
@@ -44,7 +45,7 @@ public:
         items[top++]=x;
     }
 
-    int pop()
+    T pop()
     {
         if(!top)
         {
@@ -71,7 +72,7 @@ public:
         delete[] this->items;
         this->size=s.size;
         this->top=s.top;
-        this->items=new int[size];
+        this->items=new T[size];
         for(int i=0; i<top; i++)
         {
             this->items[i]=s.items[i];
@@ -95,11 +96,11 @@ public:
     }
 };
 
-
-int Stack::counter=0;
+template <class T>
+int Stack<T>::counter=0;
 int main()
 {
-    Stack s(3);
+    Stack <int>s(3);
     s.push(1);
     s.push(2);
     s.push(3);
@@ -108,8 +109,10 @@ int main()
     s.display();
     s2.display();
     s.pop();
-    Stack::viewcontent(s);
-    Stack::viewcontent(s2);
+    s.display();
+    s2.display();
+   Stack<int>::viewcontent(s);
+   Stack<int>::viewcontent(s2);
     //cout<<Stack::getCounter()<<endl;
     return 0;
 }
